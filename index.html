@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Monitoring Delivery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-wrap">
+    <section class="delivery-panel">
+      <header class="panel-header">
+        <h1>Dashboard Monitoring Delivery</h1>
+        <div class="panel-actions">
+          <button id="detailButton" class="circle-button info-button" type="button" title="Tampilkan detail invoice" aria-expanded="false">!</button>
+          <button id="refreshButton" class="circle-button refresh-button" type="button" title="Refresh data">↻</button>
+        </div>
+      </header>
+
+      <div class="date-row">
+        <strong>Invoice Date :</strong>
+        <input id="startDate" type="date" value="2026-08-03">
+        <b>s/d</b>
+        <input id="endDate" type="date" value="2026-08-03">
+      </div>
+
+      <section class="chart-box">
+        <div class="chart-layout">
+          <div class="y-axis" id="yAxis"></div>
+          <div class="plot-area">
+            <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="bars" id="bars"></div>
+          </div>
+        </div>
+        <p class="axis-title">Jumlah Invoice</p>
+        <div class="legend" id="legend"></div>
+      </section>
+
+      <section class="percentage-row" id="percentageRow"></section>
+    </section>
+
+    <div class="detail-modal" id="detailSection" hidden>
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <section class="detail-section" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+        <header class="detail-header">
+          <h2 id="detailTitle">Detail Monitoring Delivery</h2>
+          <button id="closeDetail" type="button" aria-label="Tutup">×</button>
+        </header>
+        <div class="detail-content">
+          <div class="detail-date"><strong>Tanggal Berangkat :</strong><span id="tableDate">03 Agu 2026</span></div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>No. Mobil</th><th>Jenis Mobil</th><th>Kode Driver</th><th>Nama Driver</th><th>Jam Berangkat</th><th>No. RPP</th>
+                  <th>Open</th><th>Terkirim</th><th>Cancel</th><th>Total Invoice</th><th>KM Awal</th><th>KM Akhir</th>
+                </tr>
+              </thead>
+              <tbody id="deliveryTableBody"></tbody>
+              <tfoot id="deliveryTableFoot"></tfoot>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="invoice-modal" id="invoiceModal" hidden>
+      <div class="invoice-backdrop" id="invoiceBackdrop"></div>
+      <section class="invoice-panel" role="dialog" aria-modal="true" aria-labelledby="invoiceTitle">
+        <header class="detail-header">
+          <div>
+            <h2 id="invoiceTitle">Daftar Faktur</h2>
+            <small id="invoiceSubtitle"></small>
+          </div>
+          <button id="closeInvoice" type="button" aria-label="Tutup daftar faktur">×</button>
+        </header>
+        <div class="invoice-table-wrap">
+          <table class="invoice-table">
+            <thead><tr>
+              <th>KODE_DRIVER</th><th>NAMA_DRIVER</th><th>NO_RPP</th><th>TGL_LHV</th><th>NO_INV</th><th>CHANNEL</th><th>KODE_CUST</th><th>NAMA_CUST</th><th>ALAMAT_CUST</th><th>QTY_INVOICE</th><th>NILAI_INVOICE</th><th>TYPE_INVOICE</th><th>TYPE_PEMBAYARAN</th><th>PEMBAYARAN</th><th>KETERANGAN_SCAN_DROPPING</th><th>KETERANGAN_DELIVERY</th><th>ALASAN</th><th>STATUS_FAKTUR</th><th>ALASAN_GAGAL_KIRIM</th>
+            </tr></thead>
+            <tbody id="invoiceTableBody"></tbody>
+          </table>
+        </div>
+        <footer class="invoice-footer"><span id="invoiceCount">0 faktur</span><button id="backToDetail" type="button">← Kembali</button></footer>
+      </section>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
